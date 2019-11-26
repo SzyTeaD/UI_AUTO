@@ -7,15 +7,12 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 class Browser():
-    def __init__(self,browser):
-        self.browser = browser
-
-    def get(self):
-        if self.browser == 'ie':
+    def get(browser):
+        if browser == 'ie':
             driver = webdriver.Edge()
-        elif self.browser == 'firefox':
+        elif browser == 'firefox':
             driver = webdriver.Firefox()
-        elif self.browser == 'opera':
+        elif browser == 'opera':
             driver = webdriver.Opera()
         else:
             driver = webdriver.Chrome()
