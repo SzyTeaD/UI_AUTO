@@ -290,8 +290,9 @@ class Basic(Browser):
             if handle != old_handle:
                 self.driver.switch_to.window(handle)
 
-    def frame(self, value):
-        self.driver.switch_to.frame(value)
+    def iframe(self,type, value):
+        iframe = self.element(type, value)
+        self.driver.switch_to.frame(iframe)
 
     def frame_back(self):
         self.driver.switch_to.default_content()

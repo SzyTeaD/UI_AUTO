@@ -25,11 +25,14 @@ class ClockIn(unittest.TestCase):
         time.sleep(2)
         Button(self.dr).clock()
         time.sleep(random.randint(1,300))
+        self.dr.iframe('id','mainIframe')
+        self.dr.iframe('id','tab_iframe')
         self.dr.click('class','card-punch-end-inner')
 
     @classmethod
     def tearDownClass(self):
         self.dr.quit()
+        pass
 
 if __name__ == '__main__':
     unittest.main()

@@ -25,6 +25,8 @@ class ClockIn(unittest.TestCase):
         time.sleep(2)
         Button(self.dr).clock()
         time.sleep(random.randint(1,300))
+        self.dr.iframe('id','mainIframe')
+        self.dr.iframe('id','tab_iframe')
         self.dr.click('class','card-punch-start-inner')
 
     @classmethod
