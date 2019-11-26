@@ -17,4 +17,4 @@ def runner(test):
 
 
 if __name__ == '__main__':
-    runner('test_shelf*')
+    runner('test_clockout*')
