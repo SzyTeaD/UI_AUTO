@@ -25,7 +25,7 @@ class ClockIn(unittest.TestCase):
         time.sleep(2)
         Button(self.dr).clock()
         time.sleep(random.randint(1,300))
-        self.dr.click('class','card-punch-end-inner')
+        self.dr.text('class','card-punch-end-inner')
 
     @classmethod
     def tearDownClass(self):
