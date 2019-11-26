@@ -29,7 +29,7 @@ class ClockIn(unittest.TestCase):
 
     @classmethod
     def tearDownClass(self):
-        pass
+        self.dr.quit()
 
 if __name__ == '__main__':
     unittest.main()
