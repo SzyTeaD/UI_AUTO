@@ -1,8 +1,11 @@
 import os
+import time
 
 from config.pathes import REPORT_PATH, NOW
-from utils.BasicPage import Basic
+from utils.BasicPage import Basic, browser
 
-
-reportpath = os.path.join(REPORT_PATH, NOW + ' report.html')
-print(reportpath)
+driver = browser()
+dr = Basic(driver)
+dr.open('https://wx.qq.com/')
+time.sleep(2)
+driver.refresh()

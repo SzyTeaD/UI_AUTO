@@ -1,3 +1,5 @@
+import os
+
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -6,22 +8,24 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
-class Browser():
-    def get(browser):
-        if browser == 'ie':
-            driver = webdriver.Edge()
-        elif browser == 'firefox':
-            driver = webdriver.Firefox()
-        elif browser == 'opera':
-            driver = webdriver.Opera()
-        else:
-            driver = webdriver.Chrome()
-        return driver
+from config.pathes import EDGE_PATH, CHROME_PATH, OPERA_PATH, FIRFOX_PATH
 
 
-class Basic(Browser):
-    def __init__(self):
-        self.driver = Browser().get()
+def browser(browser = None):
+    if browser == 'ie':
+        driver = webdriver.Edge(EDGE_PATH)
+    elif browser == 'firefox':
+        driver = webdriver.Firefox(FIRFOX_PATH)
+    elif browser == 'opera':
+        driver = webdriver.Opera(OPERA_PATH)
+    else:
+        driver = webdriver.Chrome(CHROME_PATH)
+    return driver
+
+
+class Basic():
+    def __init__(self,driver):
+        self.driver = driver
 
     def open(self, url, time=15):
         """最大化打开网页"""
