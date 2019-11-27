@@ -1,7 +1,5 @@
-import random
+from utils.BasicPage import Basic
 
-tablea = []
-for i in range(20):
-    j = random.randint(1,300)
-    tablea.append(j)
-print(tablea)
+dr = Basic()
+dr.open('https://blog.csdn.net/skullfang/article/details/78820541')
+print(dr.text('xpath','//*[@id="mainBox"]/main/div[1]/div[1]/div/div[1]/h1'))

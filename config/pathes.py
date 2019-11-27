@@ -5,8 +5,8 @@ import os
 import time
 
 DAY = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-TM = time.strftime(' %H-%M-%S',time.localtime(time.time()))
-NOW = DAY + TM
+TIME = time.strftime(' %H-%M-%S',time.localtime(time.time()))
+NOW = DAY + TIME
 BASE_PATH = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
 HOME_PATH = os.path.split(os.path.split(BASE_PATH)[0])[0]
 CONFIG_PATH = os.path.join(BASE_PATH, 'config')

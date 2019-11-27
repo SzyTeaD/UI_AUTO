@@ -3,8 +3,10 @@ import time
 import unittest
 
 from config.pathes import URLINFO, USERINFO
-from test.page.HomePage import Button
+from test.page.ClockPage import Clock
+from test.page.HomePage import Home
 from test.page.LoginPage import login
+from utils.Assertion import assert_before_time
 from utils.BasicPage import Basic
 from utils.FileReader import YamlReader
 
@@ -17,22 +19,23 @@ class ClockIn(unittest.TestCase):
         self.dr.open(url)
 
     def test1_login(self):
-        username = YamlReader(USERINFO).get('YX')
-        password = YamlReader(USERINFO).get('YXPSWD')
+        username = YamlReader(USERINFO).get('OAUSER')
+        password = YamlReader(USERINFO).get('YOAPSWD')
         login(self.dr, username, password)
 
     def test2_clock(self):
         time.sleep(2)
-        Button(self.dr).clock()
+        Home(self.dr).center_of_clock()
         time.sleep(random.randint(1,300))
-        self.dr.iframe('id','mainIframe')
-        self.dr.iframe('id','tab_iframe')
-        self.dr.click('class','card-punch-end-inner')
+        assert_before_time(8,30)
+        Clock(self.dr).mainiframe()
+        Clock(self.dr).tabiframe()
+        time.sleep(0.5)
+        Clock(self.dr).clockin()
 
     @classmethod
     def tearDownClass(self):
         self.dr.quit()
-        pass
 
 if __name__ == '__main__':
     unittest.main()
