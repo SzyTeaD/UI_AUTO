@@ -17,11 +17,11 @@ PICTURE_PATH = os.path.join(BASE_PATH, 'picture')
 DRIVER_PATH = os.path.join(BASE_PATH, 'drivers')
 CHROME_PATH = os.path.join(DRIVER_PATH,'chromedriver.exe')
 LOG_PATH = os.path.join(BASE_PATH, 'log')
-REPORT_PATH = os.path.join(HOME_PATH, 'report')
+REPORT_PATH = os.path.join(BASE_PATH, 'report')
 CASE_PATH = os.path.join(os.path.join(BASE_PATH,'test'), 'case')
 IMAGE_PATH = os.path.join(os.path.join(PICTURE_PATH,'verifycode') , 'picture.png')
 FRAME_PATH = os.path.join(os.path.join(PICTURE_PATH,'verifycode'), 'frame4.png')
 SCREENSHOT_PATH = os.path.join(os.path.join(PICTURE_PATH,'screenshot'), NOW+'wrong.png')
 
 if __name__ == '__main__':
-    print(CASE_PATH)
+    print(REPORT_PATH)
