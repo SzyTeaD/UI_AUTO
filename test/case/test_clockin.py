@@ -7,14 +7,15 @@ from test.page.ClockPage import Clock
 from test.page.HomePage import Home
 from test.page.LoginPage import login
 from utils.Assertion import assert_before_time
-from utils.BasicPage import Basic
+from utils.BasicPage import Basic, browser
 from utils.FileReader import YamlReader
 
 
 class ClockIn(unittest.TestCase):
     @classmethod
     def setUpClass(self):
-        self.dr = Basic()
+        self.driver = browser()
+        self.dr = Basic(self.driver)
         url = YamlReader(URLINFO).get('OAHomeUrl')
         self.dr.open(url)
 
