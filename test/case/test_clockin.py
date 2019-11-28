@@ -27,8 +27,8 @@ class ClockIn(unittest.TestCase):
     def test2_clock(self):
         time.sleep(2)
         Home(self.dr).center_of_clock()
-        time.sleep(random.randint(1,300))
-        assert_before_time(8,30)
+        # time.sleep(random.randint(1,120))
+        assert_before_time(9,30)
         Clock(self.dr).mainiframe()
         Clock(self.dr).tabiframe()
         time.sleep(0.5)

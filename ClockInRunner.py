@@ -3,4 +3,4 @@ from utils.report import runner
 
 test = 'test_clockin*'
 runner(test)
-send_mail()
+# send_mail()
