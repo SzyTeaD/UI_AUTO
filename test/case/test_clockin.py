@@ -21,13 +21,13 @@ class ClockIn(unittest.TestCase):
 
     def test1_login(self):
         username = YamlReader(USERINFO).get('OAUSER')
-        password = YamlReader(USERINFO).get('YOAPSWD')
+        password = YamlReader(USERINFO).get('OAPSWD')
         login(self.dr, username, password)
 
     def test2_clock(self):
         time.sleep(2)
         Home(self.dr).center_of_clock()
-        # time.sleep(random.randint(1,120))
+        time.sleep(random.randint(1,120))
         assert_before_time(9,30)
         Clock(self.dr).mainiframe()
         Clock(self.dr).tabiframe()

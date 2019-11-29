@@ -3,11 +3,11 @@ import pytesseract
 from config.pathes import IMAGE_PATH, FRAME_PATH
 
 
-def verifyCode(driver):
+def verifyCode(driver,type,value):
     """不同页面需要修改"""
     driver.save_screenshot(IMAGE_PATH)  #截取当前网页
-    location = driver.location('id','VerifyCodeImg')  #获取验证码x,y轴坐标
-    size = driver.size('id','VerifyCodeImg')  #获取验证码的长宽
+    location = driver.location(type,value)  #获取验证码x,y轴坐标
+    size = driver.size(type,value)  #获取验证码的长宽
     coderange = (int(location['x']),int(location['y']),int(location['x']+ size['width']),
                int(location['y']+size['height'])) #截取位置坐标
     i = Image.open(IMAGE_PATH)

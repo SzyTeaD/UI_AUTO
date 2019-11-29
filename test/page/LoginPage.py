@@ -1,7 +1,7 @@
 import time
 
 from config.pathes import USERINFO, URLINFO
-from utils.BasicPage import  Basic
+from utils.BasicPage import Basic, browser
 from utils.FileReader import YamlReader
 from utils.verifyCode import verifyCode
 
@@ -12,7 +12,7 @@ def login(driver,username,password):
         driver.input('id','login_username',username)
         driver.clear('id','login_password')
         driver.input('id','login_password',password)
-        code = verifyCode(driver)
+        code = verifyCode(driver,'id', 'VerifyCodeImg')
         driver.input('id', 'VerifyCode', code)
         time.sleep(2)
         driver.click('id','login_button')
@@ -23,9 +23,10 @@ def login(driver,username,password):
             driver.refresh()
 
 if __name__ == '__main__':
-    dr = Basic()
+    driver = browser()
+    dr = Basic(driver)
     url = YamlReader(URLINFO).get('OAHomeUrl')
     dr.open(url)
-    username = YamlReader(USERINFO).get('YX')
-    password = YamlReader(USERINFO).get('YXPSWD')
+    username = YamlReader(USERINFO).get('OAUSER')
+    password = YamlReader(USERINFO).get('OAPSWD')
     login(dr,username,password)
