@@ -28,11 +28,10 @@ class ClockIn(unittest.TestCase):
         time.sleep(2)
         Home(self.dr).center_of_clock()
         time.sleep(random.randint(1,120))
-        assert_before_time(9,30)
         Clock(self.dr).mainiframe()
         Clock(self.dr).tabiframe()
         time.sleep(0.5)
-        Clock(self.dr).clockin()
+        # Clock(self.dr).clockin()
 
     @classmethod
     def tearDownClass(self):
