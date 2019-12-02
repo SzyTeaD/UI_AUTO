@@ -79,6 +79,8 @@ class ExcelReader:
                     self._data.append(s.row_values(col))
         return self._data
 
+
+
 def folwType(path, sheet=0,i = 0):
     f = os.path.join(path)
     reader = ExcelReader(f, sheet,title_line=True)
@@ -87,7 +89,7 @@ def folwType(path, sheet=0,i = 0):
 
 
 if __name__ == '__main__':
-    e = r'F:\Python\py_work\UI_AOTO\project\cmapp_test\data\yx_flow.xlsx'
-    a = folwType(e)
-    print(a['method'])
+    e = r'F:\PyCharm\py_work\UI_AOTO\data\wxInquiryImportTemplate.xls'
+    excel = folwType(e)
+    print(excel.get(1))
 
