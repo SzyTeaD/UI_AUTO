@@ -4,7 +4,12 @@ from config.pathes import IMAGE_PATH, FRAME_PATH
 
 
 def verifyCode(driver,type,value):
-    """不同页面需要修改"""
+    '''
+    :param driver: 实例化webdriver
+    :param type: id,class,name,css,xpath...
+    :param value: 元素
+    :return: 识别二维码字符串
+    '''
     driver.save_screenshot(IMAGE_PATH)  #截取当前网页
     location = driver.location(type,value)  #获取验证码x,y轴坐标
     size = driver.size(type,value)  #获取验证码的长宽

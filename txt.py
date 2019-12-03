@@ -2,13 +2,19 @@ import os
 import sys
 import time
 
-from config.pathes import REPORT_PATH, NOW, URLINFO
+from config.pathes import REPORT_PATH, NOW
 from utils.BasicPage import Basic, browser
 
 # driver = browser()
 # dr = Basic(driver)
-from utils.FileReader import YamlReader
 
-lists = os.listdir(REPORT_PATH)
+def txt(*args):
+    return str(*args)
+ele = ('id', 'VerifyCodeImg')
+print(os.path.join(REPORT_PATH, NOW + ' report.html'))
 
-print(lists)
+
+terminal = sys.stdout.write
+print(terminal)
+for line in sys.stdin:
+    print(line)

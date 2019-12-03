@@ -3,4 +3,5 @@ class Home():
         self.driver = driver
 
     def center_of_clock(self):
+        '''考勤中心'''
         self.driver.click('css', '[class="vportal vp-onlineRecord"]')
