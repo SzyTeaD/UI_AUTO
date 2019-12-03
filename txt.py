@@ -9,11 +9,6 @@ from utils.BasicPage import Basic, browser
 # dr = Basic(driver)
 from utils.FileReader import YamlReader
 
+lists = os.listdir(REPORT_PATH)
 
-def txt(*args):
-    return str(*args)
-ele = ('id', 'VerifyCodeImg')
-print(os.path.join(REPORT_PATH, NOW + ' report.html'))
-
-
-print(YamlReader(URLINFO).data)
+print(lists)

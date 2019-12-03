@@ -20,8 +20,8 @@ def new_report():
 def send_mail():
 
     senduser = '676307573@qq.com'
-    sendpswd = 'erfiwskmmmwlbahh'
-    receusers = ['yangxin@htyunwang.com','zhangminghui@htyunwang.com']
+    sendpswd = 'cbmbviryaaxdbegc'
+    receusers = ['676307573@qq.com']
 
     report = new_report()
     # # 获取报告文件
@@ -29,9 +29,9 @@ def send_mail():
     # body_main = f.read()
     msg = MIMEMultipart()
     # 邮件标题
-    msg['Subject'] = Header('云端营销自动化测试报告' + NOW, 'utf-8')
+    msg['Subject'] = Header('今日签到情况' + NOW, 'utf-8')
     # 邮件内容
-    text = MIMEText('云端营销测试报告，请查收！\n'+'自动发送请勿回复！', 'html', 'utf-8')
+    text = MIMEText('今日签到情况！\n'+'自动发送请勿回复！', 'html', 'utf-8')
     msg.attach(text)
     # 发送附件
     # att = MIMEApplication(open(report, 'rb').read())
