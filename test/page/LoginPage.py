@@ -6,6 +6,7 @@ from utils.FileReader import YamlReader
 from utils.verifyCode import verifyCode
 
 def login(driver,username,password):
+    '''在登录页循环提交登录信息，知道登录成功'''
     old_url = driver.current_url()
     while True:
         driver.clear('id','login_username')

@@ -8,6 +8,7 @@ from config.pathes import REPORT_PATH, NOW, DAY
 
 
 def new_report():
+    '''筛选出最新的报告'''
     lists = os.listdir(REPORT_PATH)
     #获取路径下的文件
     lists.sort(key=lambda fn: os.path.getmtime(REPORT_PATH))
@@ -19,25 +20,19 @@ def new_report():
 
 def send_mail():
 
-    senduser = '676307573@qq.com'
-    sendpswd = 'cbmbviryaaxdbegc'
-    receusers = ['676307573@qq.com']
+    senduser = '676307573@qq.com'   #发送邮箱
+    sendpswd = 'cbmbviryaaxdbegc'   #授权码
+    receusers = ['676307573@qq.com']    #收信邮箱
 
-    report = new_report()
-    # # 获取报告文件
-    # f = open(report, 'rb')
-    # body_main = f.read()
+    report = new_report()   # 获取报告文件
+    f = open(report, 'rb')
+    body_main = f.read()
     msg = MIMEMultipart()
-    # 邮件标题
-    msg['Subject'] = Header('今日签到情况' + NOW, 'utf-8')
-    # 邮件内容
-    text = MIMEText('今日签到情况！\n'+'自动发送请勿回复！', 'html', 'utf-8')
+    msg['Subject'] = Header('今日情况' + NOW, 'utf-8')  # 邮件标题
+    text = MIMEText('%s '% body_main, 'html', 'utf-8') # 邮件内容
     msg.attach(text)
-    # 发送附件
-    # att = MIMEApplication(open(report, 'rb').read())
-    att = MIMEText(open(report, 'rb').read(), 'base64', 'utf-8')
+    att = MIMEText(open(report, 'rb').read(), 'base64', 'utf-8')    # 发送附件
     att['Content-Type'] = 'application/octet-stream'
-    #att["Content-Disposition"] = 'attachment; filename="houseinformation.txt"'
     att.add_header('Content-Disposition', 'attachment', filename=('utf-8', '', DAY + "_report.html"))
     msg.attach(att)
 
