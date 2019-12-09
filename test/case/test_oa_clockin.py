@@ -28,10 +28,9 @@ class ClockIn(unittest.TestCase):
         password = YamlReader(USERINFO).get('OAPSWD')
         try:
             M3OALogin(self.dr).loginflow(username, password)
-        # time.sleep(random.randint(1,120))
         except Exception :
             pass
-
+        time.sleep(random.randint(1,120))
 
     def test2_intoclockcenter(self):
         Navigation(self.dr).Workbenchbtn()
