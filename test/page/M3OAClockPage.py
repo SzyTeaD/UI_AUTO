@@ -14,3 +14,6 @@ class Clock():
 
     def clockbtn(self):
         self.driver.find_element_by_android_uiautomator('new UiSelector().className(\"android.view.View\")').click()
+
+    # def clockoutbtn(self):
+    #     self.driver.find_element_by_android_uiautomator('new UiSelector().className(\"android.view.View\")').click()
