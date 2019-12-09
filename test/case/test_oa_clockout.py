@@ -30,7 +30,7 @@ class ClockIn(unittest.TestCase):
             M3OALogin(self.dr).loginflow(username, password)
         except Exception :
             pass
-        time.sleep(random.randint(1, 120))
+        # time.sleep(random.randint(1, 120))
 
     def test2_intoclockcenter(self):
         Navigation(self.dr).Workbenchbtn()
