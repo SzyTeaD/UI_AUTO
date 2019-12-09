@@ -45,7 +45,8 @@ class ClockIn(unittest.TestCase):
 
     def test4_clockin(self):
         Clock(self.dr).clockbtn()
-
+        Clock(self.dr).clockinbtn()
+        Clock(self.dr).attendancebtn()
 
 
     @classmethod
