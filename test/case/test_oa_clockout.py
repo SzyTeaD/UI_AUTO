@@ -82,7 +82,7 @@ class ClockIn(unittest.TestCase):
         Clock(self.dr).clockbtn()
         Clock(self.dr).clockoutbtn()
         Clock(self.dr).attendancebtn()
-
+        print("打卡成功")
 
     @classmethod
     def tearDownClass(self):

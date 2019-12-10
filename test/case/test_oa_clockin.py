@@ -77,10 +77,12 @@ class ClockIn(unittest.TestCase):
         time.sleep(1)
         Clock(self.dr).select_address('航天云网大厦')
         time.sleep(1)
+
     def test4_clockin(self):
         Clock(self.dr).clockbtn()
         Clock(self.dr).clockinbtn()
         Clock(self.dr).attendancebtn()
+        print("打卡成功")
 
 
     @classmethod
