@@ -28,4 +28,5 @@ class Clock():
             expected_conditions.presence_of_element_located((By.XPATH,"//android.view.View[@content-desc='签到']"))).click()
 
     def attendancebtn(self):
-        self.driver.find_element_by_xpath("//android.widget.Button[@resource-id='attendance-right']").click()
+        WebDriverWait(self.driver, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.XPATH,"//android.widget.Button[@resource-id='attendance-right']"))).click()
