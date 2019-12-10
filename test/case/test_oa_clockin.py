@@ -24,15 +24,19 @@ class ClockIn(unittest.TestCase):
 
     def test1_login(self):
         time.sleep(3)
+        try:
+            M3OALogin(self.dr).returnlogpage()
+        except Exception :
+            pass
         username = YamlReader(USERINFO).get('OAUSER')
         password = YamlReader(USERINFO).get('OAPSWD')
         try:
             M3OALogin(self.dr).loginflow(username, password)
         except Exception :
             pass
-        # time.sleep(random.randint(1,120))
 
     def test2_intoclockcenter(self):
+        time.sleep(random.randint(1, 120))
         Navigation(self.dr).Workbenchbtn()
         time.sleep(2)
         Navigation(self.dr).clockbtn()
@@ -45,7 +49,7 @@ class ClockIn(unittest.TestCase):
     def test4_clockin(self):
         Clock(self.dr).clockbtn()
         Clock(self.dr).clockinbtn()
-   #     Clock(self.dr).attendancebtn()
+        Clock(self.dr).attendancebtn()
 
 
     @classmethod

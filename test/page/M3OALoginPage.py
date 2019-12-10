@@ -15,3 +15,6 @@ class M3OALogin():
         self.uesernametext(username)
         self.pswdtext(pswd)
         self.surebtn()
+
+    def returnlogpage(self):
+        self.driver.find_element_by_id('com.seeyon.cmp:id/buttonDefaultPositive').click()
