@@ -3,6 +3,9 @@ import time
 import unittest
 
 from appium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 from config.pathes import  USERINFO
 from test.page.M3OAClockPage import Clock
@@ -27,6 +30,7 @@ class ClockIn(unittest.TestCase):
         try:
             self.dr.find_element_by_name("跳过")
             self.dr.find_element_by_name("跳过").click()
+            print('跳过势密码设置')
         except Exception:
             print('无手势密码设置')
         try:
@@ -34,21 +38,38 @@ class ClockIn(unittest.TestCase):
             self.dr.find_element_by_name("我知道了").click()
             time.sleep(1)
             self.dr.keyevent(4)
+            print('跳过弱密码修改')
+        except Exception:
+            print('无弱密码修改')
+        Navigation(self.dr).mybtn()
+        WebDriverWait(self.dr, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@resource-id='setting']"))).click()
+        WebDriverWait(self.dr, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@content-desc='退出登录']"))).click()
+        WebDriverWait(self.dr, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.ID,"com.seeyon.cmp:id/buttonDefaultPositive"))).click()
+        username = YamlReader(USERINFO).get('OAUSER')
+        password = YamlReader(USERINFO).get('OAPSWD')
+        M3OALogin(self.dr).uesernametext(username)
+        M3OALogin(self.dr).pswdtext(password)
+        M3OALogin(self.dr).surebtn()
+        try:
+            self.dr.find_element_by_name("跳过")
+            self.dr.find_element_by_name("跳过").click()
+            print('跳过势密码设置')
+        except Exception:
+            print('无手势密码设置')
+        try:
+            self.dr.find_element_by_name("提示")
+            self.dr.find_element_by_name("我知道了").click()
+            time.sleep(1)
+            self.dr.keyevent(4)
+            print('跳过弱密码修改')
         except Exception:
             print('无弱密码修改')
 
-        self.dr.find_elements_by_id("com.seeyon.cmp:id/main_tab_img_icon")[4].click()
-
-            # username = YamlReader(USERINFO).get('OAUSER')
-            # password = YamlReader(USERINFO).get('OAPSWD')
-            # M3OALogin(self.dr).uesernametext(username)
-            # M3OALogin(self.dr).pswdtext(password)
-            # M3OALogin(self.dr).surebtn()
-
-
-
     # def test2_intoclockcenter(self):
-    #     time.sleep(random.randint(1, 120))
+    #     time.sleep(random.randint(1, 60))
     #     Navigation(self.dr).Workbenchbtn()
     #     time.sleep(2)
     #     Navigation(self.dr).clockbtn()
