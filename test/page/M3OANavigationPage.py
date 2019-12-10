@@ -23,5 +23,7 @@ class Navigation():
 
     def clockbtn(self):
         '''签到'''
-        self.driver.find_element_by_xpath('//android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.seeyon.cmp.lib_swipeclose.TranslucentSlidingPaneLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.view.View[1]/android.widget.ListView[1]/android.view.View[8]/android.view.View[1]').click()
+        WebDriverWait(self.driver, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.XPATH,"//android.view.View[@content-desc='签到']"))).click()
+
 

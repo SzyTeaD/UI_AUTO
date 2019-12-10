@@ -67,22 +67,21 @@ class ClockIn(unittest.TestCase):
             print('跳过弱密码修改')
         except Exception:
             print('无弱密码修改')
+        print(username)
 
-    # def test2_intoclockcenter(self):
-    #     time.sleep(random.randint(1, 60))
-    #     Navigation(self.dr).Workbenchbtn()
-    #     time.sleep(2)
-    #     Navigation(self.dr).clockbtn()
-    #     time.sleep(2)
-    #
-    # def test3_seleadress(self):
-    #     Clock(self.dr).select_address('航天云网大厦')
-    #     time.sleep(1)
-    #
-    # def test4_clockin(self):
-    #     Clock(self.dr).clockbtn()
-    #     Clock(self.dr).clockoutbtn()
-    #     Clock(self.dr).attendancebtn()
+    def test2_seleadress(self):
+        # time.sleep(random.randint(1, 60))
+        Navigation(self.dr).workbenchbtn()
+        time.sleep(1)
+        Navigation(self.dr).clockbtn()
+        time.sleep(1)
+        Clock(self.dr).select_address('航天云网大厦')
+        time.sleep(1)
+
+    def test3_clockin(self):
+        Clock(self.dr).clockbtn()
+        Clock(self.dr).clockoutbtn()
+        Clock(self.dr).attendancebtn()
 
 
     @classmethod

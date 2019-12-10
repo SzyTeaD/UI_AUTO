@@ -3,6 +3,9 @@ import time
 import unittest
 
 from appium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 from config.pathes import  USERINFO
 from test.page.M3OAClockPage import Clock
@@ -16,7 +19,7 @@ class ClockIn(unittest.TestCase):
     def setUpClass(self):
         desired_caps = {}
         desired_caps['platformName'] = 'Android'
-        desired_caps['platformVersion'] = '6.0'
+        desired_caps['platformVersion'] = '9.1'
         desired_caps['deviceName'] = '7XBNW18C10005211'
         desired_caps['appPackage'] = 'com.seeyon.cmp'
         desired_caps['appActivity'] = '.ui.LoadActivity'
@@ -25,27 +28,55 @@ class ClockIn(unittest.TestCase):
     def test1_login(self):
         time.sleep(3)
         try:
-            M3OALogin(self.dr).returnlogpage()
-        except Exception :
-            pass
+            self.dr.find_element_by_name("跳过")
+            self.dr.find_element_by_name("跳过").click()
+            print('跳过势密码设置')
+        except Exception:
+            print('无手势密码设置')
+        try:
+            self.dr.find_element_by_name("提示")
+            self.dr.find_element_by_name("我知道了").click()
+            time.sleep(1)
+            self.dr.keyevent(4)
+            print('跳过弱密码修改')
+        except Exception:
+            print('无弱密码修改')
+        Navigation(self.dr).mybtn()
+        WebDriverWait(self.dr, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@resource-id='setting']"))).click()
+        WebDriverWait(self.dr, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@content-desc='退出登录']"))).click()
+        WebDriverWait(self.dr, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.ID,"com.seeyon.cmp:id/buttonDefaultPositive"))).click()
         username = YamlReader(USERINFO).get('OAUSER')
         password = YamlReader(USERINFO).get('OAPSWD')
+        M3OALogin(self.dr).uesernametext(username)
+        M3OALogin(self.dr).pswdtext(password)
+        M3OALogin(self.dr).surebtn()
         try:
-            M3OALogin(self.dr).loginflow(username, password)
-        except Exception :
-            pass
+            self.dr.find_element_by_name("跳过")
+            self.dr.find_element_by_name("跳过").click()
+            print('跳过势密码设置')
+        except Exception:
+            print('无手势密码设置')
+        try:
+            self.dr.find_element_by_name("提示")
+            self.dr.find_element_by_name("我知道了").click()
+            time.sleep(1)
+            self.dr.keyevent(4)
+            print('跳过弱密码修改')
+        except Exception:
+            print('无弱密码修改')
+        print(username)
 
-    def test2_intoclockcenter(self):
-        time.sleep(random.randint(1, 120))
-        Navigation(self.dr).Workbenchbtn()
-        time.sleep(2)
+    def test2_seleadress(self):
+        # time.sleep(random.randint(1, 60))
+        Navigation(self.dr).workbenchbtn()
+        time.sleep(1)
         Navigation(self.dr).clockbtn()
-        time.sleep(2)
-
-    def test3_seleadress(self):
+        time.sleep(1)
         Clock(self.dr).select_address('航天云网大厦')
         time.sleep(1)
-
     def test4_clockin(self):
         Clock(self.dr).clockbtn()
         Clock(self.dr).clockinbtn()
