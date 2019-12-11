@@ -8,5 +8,5 @@ for pid in pids:
     print('pid-%s,pname-%s' % (pid, p.name()))
     if 'Appium.exe' in p.name():
         cmd = 'taskkill /F /IM Appium.exe'
-        os.system(cmd)
+        # os.system(cmd)
         print('关闭appium')

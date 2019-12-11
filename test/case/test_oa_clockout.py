@@ -72,20 +72,20 @@ class ClockIn(unittest.TestCase):
             print('无弱密码修改')
         print(username)
 
-    def test2_seleadress(self):
-        # time.sleep(random.randint(1, 60))
-        Navigation(self.dr).workbenchbtn()
-        time.sleep(1)
-        Navigation(self.dr).clockbtn()
-        time.sleep(1)
-        Clock(self.dr).select_address('航天云网大厦')
-        time.sleep(1)
-
-    def test3_clockin(self):
-        Clock(self.dr).clockbtn()
-        Clock(self.dr).clockoutbtn()
-        Clock(self.dr).attendancebtn()
-        print("打卡成功")
+    # def test2_seleadress(self):
+    #     # time.sleep(random.randint(1, 60))
+    #     Navigation(self.dr).workbenchbtn()
+    #     time.sleep(1)
+    #     Navigation(self.dr).clockbtn()
+    #     time.sleep(1)
+    #     Clock(self.dr).select_address('航天云网大厦')
+    #     time.sleep(1)
+    #
+    # def test3_clockin(self):
+    #     Clock(self.dr).clockbtn()
+    #     Clock(self.dr).clockoutbtn()
+    #     Clock(self.dr).attendancebtn()
+    #     print("打卡成功")
 
     @classmethod
     def tearDownClass(self):
