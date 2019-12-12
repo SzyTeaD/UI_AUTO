@@ -57,8 +57,8 @@ class ClockIn(unittest.TestCase):
         M3OALogin(self.dr).pswdtext(password)
         M3OALogin(self.dr).surebtn()
         try:
-            self.dr.find_element_by_name("跳过")
-            self.dr.find_element_by_name("跳过").click()
+            self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']")
+            self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']").click()
             print('跳过势密码设置')
         except Exception:
             print('无手势密码设置')
