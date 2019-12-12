@@ -73,7 +73,7 @@ class ClockIn(unittest.TestCase):
         print(username)
 
     def test2_seleadress(self):
-        # time.sleep(random.randint(1, 60))
+        time.sleep(random.randint(1, 90))
         Navigation(self.dr).workbenchbtn()
         time.sleep(1)
         Navigation(self.dr).clockbtn()
