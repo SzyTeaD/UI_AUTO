@@ -8,11 +8,11 @@ class Clock():
     def __init__(self,driver):
         self.driver = driver
 
-    def select_address(self,address='航天云网大厦'):
+    def select_address(self):
         time.sleep(1)
-        self.driver.find_element_by_accessibility_id('点石商务公园').click()
+        self.driver.find_element_by_xpath("//android.view.View[@resource-id='index-container']/android.view.View[3]/android.view.View[1]/android.view.View[2]").click()
         time.sleep(1)
-        self.driver.find_element_by_accessibility_id(address).click()
+        self.driver.find_element_by_xpath("//android.view.View[@content-desc='航天云网大厦']").click()
 
     def clockbtn(self):
         WebDriverWait(self.driver, 15, 1).until(

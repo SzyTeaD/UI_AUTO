@@ -17,6 +17,7 @@ from utils.FileReader import YamlReader
 class ClockIn(unittest.TestCase):
     @classmethod
     def setUpClass(self):
+        time.sleep(random.randint(1, 30))
         desired_caps = {}
         desired_caps['platformName'] = 'Android'
         desired_caps['platformVersion'] = '9.1'
@@ -73,12 +74,14 @@ class ClockIn(unittest.TestCase):
         print(username)
 
     def test2_seleadress(self):
-        time.sleep(random.randint(1, 90))
         Navigation(self.dr).workbenchbtn()
         time.sleep(1)
         Navigation(self.dr).clockbtn()
         time.sleep(1)
-        Clock(self.dr).select_address('航天云网大厦')
+        if self.dr.find_element_by_accessibility_id('航天云网大厦'):
+            print('已定位')
+        else:
+            Clock(self.dr).select_address()
         time.sleep(1)
 
     def test4_clockin(self):
