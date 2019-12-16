@@ -17,6 +17,11 @@ from utils.FileReader import YamlReader
 class ClockIn(unittest.TestCase):
     @classmethod
     def setUpClass(self):
+        time.sleep(random.randint(1, 30))
+        yang = YamlReader(USERINFO).get('OA')[0]
+        for i,v in yang.items():
+            self.username=i
+            self.password=v
         desired_caps = {}
         desired_caps['platformName'] = 'Android'
         desired_caps['platformVersion'] = '9.1'
@@ -73,7 +78,6 @@ class ClockIn(unittest.TestCase):
         print(username)
 
     def test2_seleadress(self):
-        time.sleep(random.randint(1, 90))
         Navigation(self.dr).workbenchbtn()
         time.sleep(1)
         Navigation(self.dr).clockbtn()

@@ -22,7 +22,7 @@ def send_mail():
 
     senduser = '676307573@qq.com'   #发送邮箱
     sendpswd = 'atcimddyfallbebb'   #授权码
-    receusers = ['676307573@qq.com']    #收信邮箱
+    receusers = ['676307573@qq.com','1181105615@qq.com']    #收信邮箱
 
     report = new_report()   # 获取报告文件
     f = open(report, 'rb')
