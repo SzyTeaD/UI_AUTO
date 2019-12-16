@@ -8,11 +8,11 @@ class Clock():
     def __init__(self,driver):
         self.driver = driver
 
-    def select_address(self,address):
+    def select_address(self,address='航天云网大厦'):
         time.sleep(1)
         self.driver.find_element_by_accessibility_id('点石商务公园').click()
         time.sleep(1)
-        self.driver.find_element_by_accessibility_id('航天云网大厦').click()
+        self.driver.find_element_by_accessibility_id(address).click()
 
     def clockbtn(self):
         WebDriverWait(self.driver, 15, 1).until(
