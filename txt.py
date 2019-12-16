@@ -1,4 +1,7 @@
+import os
+
 from config.pathes import USERINFO
 from utils.FileReader import YamlReader
 
-readuserinfo()
+
+print(os.getcwd())
