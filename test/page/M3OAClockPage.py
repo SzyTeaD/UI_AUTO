@@ -10,7 +10,7 @@ class Clock():
 
     def select_address(self):
         time.sleep(1)
-        self.driver.find_element_by_xpath("//android.view.View[@resource-id='index-container']/android.view.View[3]/android.view.View[1]/android.view.View[2]").click()
+        self.driver.find_element_by_xpath("//android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.seeyon.cmp.lib_swipeclose.TranslucentSlidingPaneLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.view.View[1]/android.view.View[1]/android.view.View[3]/android.view.View[1]/android.view.View[2]").click()
         time.sleep(1)
         self.driver.find_element_by_xpath("//android.view.View[@content-desc='航天云网大厦']").click()
 

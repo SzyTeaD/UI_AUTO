@@ -82,9 +82,10 @@ class ClockIn(unittest.TestCase):
         time.sleep(1)
         Navigation(self.dr).clockbtn()
         time.sleep(1)
-        if self.dr.find_element_by_accessibility_id('航天云网大厦'):
+        try:
+            self.dr.find_element_by_accessibility_id('航天云网大厦')
             print('已定位')
-        else:
+        except Exception:
             Clock(self.dr).select_address()
         time.sleep(1)
 
