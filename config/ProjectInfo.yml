@@ -1,0 +1,8 @@
+OA:
+  HomeUrl: 'https://oa.casicloud.com:4438/seeyon/main.do'
+  log:
+      file_name: OAtest.log
+      backup: 5
+      console_level: WARNING
+      file_level: DEBUG
+      pattern: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'

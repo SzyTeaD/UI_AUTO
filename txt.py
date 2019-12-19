@@ -1,7 +1,7 @@
 import random
 import unittest
 
-from config.pathes import USERINFO
+from config.pathes import USERINFO, URLINFO
 from utils.FileReader import YamlReader
 
 
@@ -31,6 +31,6 @@ class logtest(unittest.TestCase):
         print(3,self.sum)
 
 if __name__ == '__main__':
-    c = YamlReader(USERINFO).get('OA').keys()
+    c = YamlReader(URLINFO).get('OA')
 
     print(c)
