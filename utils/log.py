@@ -3,13 +3,15 @@ import os
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
-from config.pathes import LOG_PATH, PROJECTINFO, NOW
+from config.pathes import LOG_PATH, PROJECTINFO, NOW, DAY
 from utils.FileReader import YamlReader
 
 
 class Logger(object):
-    def __init__(self, progect,logger_name='oatest'):
-        self.logger = logging.getLogger(logger_name)
+    def __init__(self, progect):
+        self.progect = progect
+        self.logger_name = '%stest' % self.progect
+        self.logger = logging.getLogger(self.logger_name)
         logging.root.setLevel(logging.NOTSET)
         c = YamlReader(PROJECTINFO).get(progect).get('log')
         self.log_file_name = c.get('file_name') if c and c.get('file_name') else NOW+'test.log'  # 日志文件
@@ -29,7 +31,7 @@ class Logger(object):
             self.logger.addHandler(console_handler)
 
             # 每天重新创建一个日志文件，最多保留backup_count份
-            lf = TimedRotatingFileHandler(filename=os.path.join(LOG_PATH, self.log_file_name),
+            lf = TimedRotatingFileHandler(filename=os.path.join(LOG_PATH, DAY+self.log_file_name),
                                                     when='D',
                                                     interval=1,
                                                     backupCount=self.backup_count,
