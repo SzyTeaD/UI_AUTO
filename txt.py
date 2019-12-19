@@ -1,18 +1,36 @@
 import random
+import unittest
 
-from retrying import retry
+from config.pathes import USERINFO
+from utils.FileReader import YamlReader
 
 
-@retry(stop_max_attempt_number=11)
-class flu():
-    def __init__(self):
+class logtest(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
         self.sum = 0
 
+    def test1(self):
+        if self.sum > 10:
+            self.sum+=random.randint(1,6)
 
-    def retry_test(self):
-        a = random.randint(1,10)
-        b = random.randint(1,5)
-        self.sum += 1
-        assert a == b
-        print(self.sum)
-flu().retry_test()
+        else:
+            self.sum+=random.randint(1,20)
+        print(1,self.sum)
+
+    def test2(self):
+        if self.sum > 20:
+            self.sum += random.randint(1, 6)
+
+        else:
+            self.sum += random.randint(1, 10)
+        print(2,self.sum)
+
+    @classmethod
+    def tearDownClass(self):
+        print(3,self.sum)
+
+if __name__ == '__main__':
+    c = YamlReader(USERINFO).get('OA').keys()
+
+    print(c)
