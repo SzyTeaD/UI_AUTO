@@ -1,8 +1,10 @@
+import ctypes
 import random
 import unittest
 
-from config.pathes import USERINFO, URLINFO
+from config.pathes import USERINFO, PROJECTINFO
 from utils.FileReader import YamlReader
+from utils.log import logger
 
 
 class logtest(unittest.TestCase):
@@ -30,7 +32,45 @@ class logtest(unittest.TestCase):
     def tearDownClass(self):
         print(3,self.sum)
 
-if __name__ == '__main__':
-    c = YamlReader(URLINFO).get('OA').get('log')
 
-    print(c)
+class Out_color:
+    FOREGROUND_WHITE = 0x0007
+    FOREGROUND_BLUE = 0x01 | 0x08  # text color contains blue.
+    FOREGROUND_GREEN = 0x02 | 0x08  # text color contains green.
+    FOREGROUND_RED = 0x04 | 0x08  # text color contains red.
+    FOREGROUND_YELLOW = FOREGROUND_RED | FOREGROUND_GREEN
+    STD_OUTPUT_HANDLE = -11
+    std_out_handle = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
+
+    def __init__(self):
+        pass
+
+    # @ set color in computer terminal.
+    def set_color(self, color, handle=std_out_handle):
+        bool = ctypes.windll.kernel32.SetConsoleTextAttribute(handle, color)
+        return bool
+
+    # Failed or Error messge is text color contains red.
+    def messge_error(self, str):
+        self.set_color(Out_color.FOREGROUND_RED)
+        logger.info(str)
+        self.set_color(Out_color.FOREGROUND_WHITE)
+
+    # Passed messge is text color contains green.
+    def messge_pass(self, str):
+        self.set_color(Out_color.FOREGROUND_GREEN)
+        logger.info(str)
+        self.set_color(Out_color.FOREGROUND_WHITE)
+
+    # Title messge is text color contains blue.
+    def title(self, str):
+        self.set_color(Out_color.FOREGROUND_BLUE)
+        logger.info(str)
+        self.set_color(Out_color.FOREGROUND_WHITE)
+
+
+
+if __name__ == '__main__':
+    c = YamlReader(PROJECTINFO).get('OA').get('log')
+    output = Out_color()
+    output.messge_pass("Passed")
