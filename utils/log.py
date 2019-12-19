@@ -31,7 +31,7 @@ class Logger(object):
             self.logger.addHandler(console_handler)
 
             # 每天重新创建一个日志文件，最多保留backup_count份
-            lf = TimedRotatingFileHandler(filename=os.path.join(LOG_PATH, DAY+self.log_file_name),
+            lf = TimedRotatingFileHandler(filename=os.path.join(LOG_PATH, DAY+' '+self.log_file_name),
                                                     when='D',
                                                     interval=1,
                                                     backupCount=self.backup_count,
