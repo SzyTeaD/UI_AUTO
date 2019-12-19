@@ -11,7 +11,7 @@ class Logger(object):
     def __init__(self, logger_name='framework'):
         self.logger = logging.getLogger(logger_name)
         logging.root.setLevel(logging.NOTSET)
-        c = YamlReader(USERINFO).get('log')
+        c = YamlReader(URLINFO).get('OA').get('log')
         self.log_file_name = c.get('file_name') if c and c.get('file_name') else 'test.log'  # 日志文件
         self.backup_count = c.get('backup') if c and c.get('backup') else 5  # 保留的日志数量
         # 日志输出级别

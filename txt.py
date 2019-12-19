@@ -31,6 +31,6 @@ class logtest(unittest.TestCase):
         print(3,self.sum)
 
 if __name__ == '__main__':
-    c = YamlReader(URLINFO).get('OA')
+    c = YamlReader(URLINFO).get('OA').get('log')
 
     print(c)
