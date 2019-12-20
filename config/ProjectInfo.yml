@@ -3,7 +3,7 @@ OA:
   mail:
     senduser: '676307573@qq.com'
     sendpswd: 'atcimddyfallbebb'
-    receusers: ['676307573@qq.com','1181105615@qq.com']
+    receusers: ['676307573@qq.com']
   log:
       file_name: OAtest.log
       backup: 5

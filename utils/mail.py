@@ -15,8 +15,6 @@ class Mail():
         self.senduser = YamlReader(PROJECTINFO).get(self.project).get('mail')['senduser']   # 发送邮箱
         self.sendpswd = YamlReader(PROJECTINFO).get(self.project).get('mail')['sendpswd']   # 授权码
         self.receusers = YamlReader(PROJECTINFO).get(self.project).get('mail')['receusers']    # 收信邮箱
-        self.report = self.new_report()   # 获取报告文件
-        self.log = self.new_log()   # 获取日志
 
     def new_report(self):
         """筛选出最新的报告"""
@@ -33,12 +31,13 @@ class Mail():
         return new_log
 
     def send_mail(self):
-        body_main = self.log
+        body_main = self.new_log()
+        report = self.new_report()
         msg = MIMEMultipart()
         msg['Subject'] = Header('今日情况' + NOW, 'utf-8')  # 邮件标题
-        text = MIMEText('%s '% body_main, 'html', 'utf-8')  # 邮件内容
+        text = MIMEText(body_main, 'html', 'utf-8')  # 邮件内容
         msg.attach(text)
-        att = MIMEText(open(self.report, 'rb').readline(), 'base64', 'utf-8')    # 发送附件
+        att = MIMEText(open(report, 'rb').read(), 'base64', 'utf-8')    # 发送附件
         att['Content-Type'] = 'application/octet-stream'
         att.add_header('Content-Disposition', 'attachment', filename=('utf-8', '', DAY + "_report.html"))
         msg.attach(att)
@@ -53,5 +52,5 @@ class Mail():
 
 if __name__ == '__main__':
     eml = Mail('OA')
-    # eml.send_mail()
-    print(eml.new_log())
+    eml.send_mail()
+
