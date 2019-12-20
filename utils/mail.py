@@ -19,7 +19,7 @@ class Mail():
         self.log = self.new_log()   # 获取日志
 
     def new_report(self):
-        '''筛选出最新的报告'''
+        """筛选出最新的报告"""
         lists = os.listdir(REPORT_PATH)        # 获取路径下的文件
         lists.sort(key=lambda fn: os.path.getmtime(REPORT_PATH))        # 按照时间顺序排序
         new_report = os.path.join(REPORT_PATH,lists[-1])        # 获取最近时间的
@@ -42,7 +42,6 @@ class Mail():
         att['Content-Type'] = 'application/octet-stream'
         att.add_header('Content-Disposition', 'attachment', filename=('utf-8', '', DAY + "_report.html"))
         msg.attach(att)
-
         smtp = smtplib.SMTP()
         smtp.connect('smtp.qq.com')
         smtp.login(self.senduser, self.sendpswd)
@@ -50,6 +49,7 @@ class Mail():
         for receuser in self.receusers:
             msg['To'] = receuser
             smtp.sendmail(self.senduser, receuser, msg.as_string())
+
 
 if __name__ == '__main__':
     eml = Mail('OA')
