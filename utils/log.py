@@ -14,6 +14,7 @@ class Logger(object):
         self.logger = logging.getLogger(self.logger_name)
         logging.root.setLevel(logging.NOTSET)
         c = YamlReader(PROJECTINFO).get(progect).get('log')
+        if not os.path.exists(LOG_PATH): os.mkdir(LOG_PATH)
         self.log_file_name = c.get('file_name') if c and c.get('file_name') else NOW+'test.log'  # 日志文件
         self.backup_count = c.get('backup') if c and c.get('backup') else 5  # 保留的日志数量
         # 日志输出级别

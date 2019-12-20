@@ -11,6 +11,7 @@ from utils.FileReader import YamlReader
 class Mail():
     def __init__(self,project):
         self.project = project
+        if not os.path.exists(REPORT_PATH): os.mkdir(LOG_PATH)
         self.senduser = YamlReader(PROJECTINFO).get(self.project).get('mail')['senduser']   # 发送邮箱
         self.sendpswd = YamlReader(PROJECTINFO).get(self.project).get('mail')['sendpswd']   # 授权码
         self.receusers = YamlReader(PROJECTINFO).get(self.project).get('mail')['receusers']    # 收信邮箱
