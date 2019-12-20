@@ -3,5 +3,5 @@ from utils.report import runner
 
 test = 'test_oa_clockout*'
 runner(test)
-eml = Mail()
+eml = Mail('OA')
 eml.send_mail()
