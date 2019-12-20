@@ -20,7 +20,7 @@ class ClockIn(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         self.logger = Logger('OA').get_logger()
-        time.sleep(random.randint(1, 30))
+        time.sleep(random.randint(1, 90))
         yang = YamlReader(USERINFO).get('OA')[0]
         for i,v in yang.items():
             self.username=i
