@@ -9,12 +9,15 @@ from utils.FileReader import YamlReader
 
 
 class Mail():
-    def __init__(self,project):
+    def __init__(self,project,receusers=None):
         self.project = project
         if not os.path.exists(REPORT_PATH): os.mkdir(LOG_PATH)
         self.senduser = YamlReader(PROJECTINFO).get(self.project).get('mail')['senduser']   # 发送邮箱
         self.sendpswd = YamlReader(PROJECTINFO).get(self.project).get('mail')['sendpswd']   # 授权码
-        self.receusers = YamlReader(PROJECTINFO).get(self.project).get('mail')['receusers']    # 收信邮箱
+        if receusers:
+            self.receusers = receusers
+        else:
+            self.receusers = YamlReader(PROJECTINFO).get(self.project).get('mail')['receusers']    # 收信邮箱
 
     def new_report(self):
         """筛选出最新的报告"""
@@ -51,6 +54,10 @@ class Mail():
 
 
 if __name__ == '__main__':
-    eml = Mail('OA')
+    l = []
+    receusers = YamlReader(PROJECTINFO).get('OA').get('mail')['receusers'][0]
+    l.append(receusers)
+    print(l)
+    eml = Mail('OA',l)
     eml.send_mail()
 
