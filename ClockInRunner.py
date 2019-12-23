@@ -18,7 +18,5 @@ ZH = []
 time.sleep(random.randint(1, 90))
 test = 'test_oa_clockin_ZH*'
 runner(test)
-receusers = YamlReader(PROJECTINFO).get('OA').get('mail')['receusers'][1]
-ZH.append(receusers)
-eml = Mail('OA', ZH)
+eml = Mail('OA')
 eml.send_mail()
