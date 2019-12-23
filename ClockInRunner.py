@@ -1,7 +1,24 @@
+import random
+import time
+
+from config.pathes import PROJECTINFO
+from utils.FileReader import YamlReader
 from utils.mail import  Mail
 from utils.report import runner
 
-test = 'test_oa_clockin*'
+Y = []
+time.sleep(random.randint(1, 90))
+test = 'test_oa_clockin_Y*'
 runner(test)
-eml = Mail('OA')
+receusers = YamlReader(PROJECTINFO).get('OA').get('mail')['receusers'][0]
+Y.append(receusers)
+eml = Mail('OA', Y)
+eml.send_mail()
+ZH = []
+time.sleep(random.randint(1, 90))
+test = 'test_oa_clockin_ZH*'
+runner(test)
+receusers = YamlReader(PROJECTINFO).get('OA').get('mail')['receusers'][1]
+ZH.append(receusers)
+eml = Mail('OA', ZH)
 eml.send_mail()

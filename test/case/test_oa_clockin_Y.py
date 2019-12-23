@@ -1,4 +1,3 @@
-import random
 import time
 import unittest
 
@@ -8,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from config.pathes import  USERINFO
+from config.pathes import USERINFO
 from test.page.M3OAClockPage import Clock
 from test.page.M3OALoginPage import M3OALogin
 from test.page.M3OANavigationPage import Navigation
@@ -20,7 +19,6 @@ class ClockIn(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         self.logger = Logger('OA').get_logger()
-        # time.sleep(random.randint(1, 90))
         yang = YamlReader(USERINFO).get('OA')[0]
         for i,v in yang.items():
             self.username=i
@@ -104,6 +102,7 @@ class ClockIn(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         self.dr.quit()
+
 
 if __name__ == '__main__':
     unittest.main()
