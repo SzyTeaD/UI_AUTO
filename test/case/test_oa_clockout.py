@@ -39,17 +39,17 @@ class ClockOut(unittest.TestCase):
         try:
             self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']")
             self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']").click()
-            self.logger.info('跳过势密码设置')
+            print('跳过势密码设置')
         except Exception:
-            self.logger.info('无手势密码设置')
+            print('无手势密码设置')
         try:
             self.dr.find_element_by_name("提示")
             self.dr.find_element_by_name("我知道了").click()
             time.sleep(1)
             self.dr.keyevent(4)
-            self.logger.info('跳过弱密码修改')
+            print('跳过弱密码修改')
         except Exception:
-            self.logger.info('无弱密码修改')
+            print('无弱密码修改')
         try:
             Navigation(self.dr).mybtn()
             WebDriverWait(self.dr, 15, 1).until(
@@ -59,22 +59,22 @@ class ClockOut(unittest.TestCase):
             WebDriverWait(self.dr, 15, 1).until(
                 expected_conditions.presence_of_element_located((By.ID,"com.seeyon.cmp:id/buttonDefaultPositive"))).click()
         except Exception:
-            self.logger.info('已退出登录')
+            self.logger.info('%s已退出登录' % self.username)
         M3OALogin(self.dr).uesernametext(self.username)
         M3OALogin(self.dr).pswdtext(self.password)
         M3OALogin(self.dr).surebtn()
         try:
             self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']")
             self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']").click()
-            self.logger.info('跳过势密码设置')
+            print('跳过势密码设置')
         except Exception:
-            self.logger.info('无手势密码设置')
+            print('无手势密码设置')
         try:
             self.dr.find_element_by_name("提示")
             self.dr.find_element_by_name("我知道了").click()
             time.sleep(1)
             self.dr.keyevent(4)
-            self.logger.info('跳过弱密码修改')
+            print('跳过弱密码修改')
         except Exception:
             self.logger.info('无弱密码修改')
         self.logger.info('%s已成功登录' % self.username)
