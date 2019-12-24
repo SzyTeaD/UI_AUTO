@@ -8,22 +8,20 @@ from config.pathes import REPORT_PATH, NOW, DAY, PROJECTINFO, LOG_PATH
 from utils.FileReader import YamlReader
 
 
-class Mail():
-    def __init__(self,project,receusers=None):
-        self.project = project
-        if not os.path.exists(REPORT_PATH): os.mkdir(LOG_PATH)
-        self.senduser = YamlReader(PROJECTINFO).get(self.project).get('mail')['senduser']   # 发送邮箱
-        self.sendpswd = YamlReader(PROJECTINFO).get(self.project).get('mail')['sendpswd']   # 授权码
-        if receusers:
-            self.receusers = receusers
-        else:
-            self.receusers = YamlReader(PROJECTINFO).get(self.project).get('mail')['receusers']    # 收信邮箱
+class Mail(object):
+    def __init__(self, project, receusers=None):
+        self.m = YamlReader(PROJECTINFO).get(project).get('mail')
+        if not os.path.exists(REPORT_PATH):
+            os.mkdir(REPORT_PATH)
+        self.senduser = self.m['senduser']   # 发送邮箱
+        self.sendpswd = self.m['sendpswd']   # 授权码
+        self.receusers = receusers if receusers else self.m['receusers']  # 收信邮箱
 
     def new_report(self):
         """筛选出最新的报告"""
         lists = os.listdir(REPORT_PATH)        # 获取路径下的文件
         lists.sort(key=lambda fn: os.path.getmtime(REPORT_PATH))        # 按照时间顺序排序
-        new_report = os.path.join(REPORT_PATH,lists[-1])        # 获取最近时间的
+        new_report = os.path.join(REPORT_PATH, lists[-1])        # 获取最近时间的
         return new_report
 
     def new_log(self):
@@ -58,6 +56,6 @@ if __name__ == '__main__':
     receusers = YamlReader(PROJECTINFO).get('OA').get('mail')['receusers'][0]
     l.append(receusers)
     print(l)
-    eml = Mail('OA',l)
+    eml = Mail('OA')
     eml.send_mail()
 
