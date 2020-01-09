@@ -14,16 +14,19 @@ class Navigation():
         return elements
 
     def workbenchbtn(self):
-        '''点击工作台'''
+        """点击工作台"""
         self.nacigations()[2].click()
 
     def mybtn(self):
-        '''点击工作台'''
+        """点击我的"""
         self.nacigations()[4].click()
 
     def clockbtn(self):
-        '''签到'''
+        """签到"""
         WebDriverWait(self.driver, 15, 1).until(
-            expected_conditions.presence_of_element_located((By.XPATH,"//android.view.View[@content-desc='签到']"))).click()
+            expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@content-desc='签到']"))).click()
 
-
+    def reclockbtn(self):
+        """重新打卡"""
+        WebDriverWait(self.driver, 15, 1).until(
+            expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@content-desc='重新打卡']"))).click()
