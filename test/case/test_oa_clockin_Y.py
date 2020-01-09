@@ -103,11 +103,6 @@ class ClockIn(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         self.dr.quit()
-        Y = []
-        receusers = YamlReader(PROJECTINFO).get('OA').get('mail')['receusers'][0]
-        Y.append(receusers)
-        eml = Mail('OA', Y)
-        eml.send_mail()
 
 
 if __name__ == '__main__':
