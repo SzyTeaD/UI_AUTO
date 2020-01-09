@@ -34,33 +34,36 @@ class ClockIn(unittest.TestCase):
     @retry(stop_max_attempt_number=3)
     def test1_login(self):
         time.sleep(3)
+        # try:
+        #     self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']")
+        #     self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']").click()
+        #     print('跳过势密码设置')
+        # except Exception:
+        #     print('无手势密码设置')
+        # try:
+        #     self.dr.find_element_by_name("提示")
+        #     self.dr.find_element_by_name("我知道了").click()
+        #     time.sleep(1)
+        #     self.dr.keyevent(4)
+        #     print('跳过弱密码修改')
+        # except Exception:
+        #     print('无弱密码修改')
+        # try:
+        #     Navigation(self.dr).mybtn()
+        #     WebDriverWait(self.dr, 15, 1).until(
+        #         expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@resource-id='setting']"))).click()
+        #     WebDriverWait(self.dr, 15, 1).until(
+        #         expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@content-desc='退出登录']"))).click()
+        #     WebDriverWait(self.dr, 15, 1).until(
+        #         expected_conditions.presence_of_element_located((By.ID,"com.seeyon.cmp:id/buttonDefaultPositive"))).click()
+        # except Exception:
+        #     self.logger.info('%s 已退出登录' % self.username)
         try:
-            self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']")
-            self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']").click()
-            print('跳过势密码设置')
+            M3OALogin(self.dr).uesernametext(self.username)
+            M3OALogin(self.dr).pswdtext(self.password)
+            M3OALogin(self.dr).surebtn()
         except Exception:
-            print('无手势密码设置')
-        try:
-            self.dr.find_element_by_name("提示")
-            self.dr.find_element_by_name("我知道了").click()
-            time.sleep(1)
-            self.dr.keyevent(4)
-            print('跳过弱密码修改')
-        except Exception:
-            print('无弱密码修改')
-        try:
-            Navigation(self.dr).mybtn()
-            WebDriverWait(self.dr, 15, 1).until(
-                expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@resource-id='setting']"))).click()
-            WebDriverWait(self.dr, 15, 1).until(
-                expected_conditions.presence_of_element_located((By.XPATH, "//android.view.View[@content-desc='退出登录']"))).click()
-            WebDriverWait(self.dr, 15, 1).until(
-                expected_conditions.presence_of_element_located((By.ID,"com.seeyon.cmp:id/buttonDefaultPositive"))).click()
-        except Exception:
-            self.logger.info('%s 已退出登录' % self.username)
-        M3OALogin(self.dr).uesernametext(self.username)
-        M3OALogin(self.dr).pswdtext(self.password)
-        M3OALogin(self.dr).surebtn()
+            pass
         try:
             self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']")
             self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']").click()
