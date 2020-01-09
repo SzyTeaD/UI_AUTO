@@ -7,12 +7,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from config.pathes import USERINFO
+from config.pathes import USERINFO, PROJECTINFO
 from test.page.M3OAClockPage import Clock
 from test.page.M3OALoginPage import M3OALogin
 from test.page.M3OANavigationPage import Navigation
 from utils.FileReader import YamlReader
 from utils.log import Logger
+from utils.mail import Mail
 
 
 class ClockIn(unittest.TestCase):
@@ -91,17 +92,22 @@ class ClockIn(unittest.TestCase):
         time.sleep(1)
         self.logger.info('%s已成功定位' % self.username)
 
-    @retry(stop_max_attempt_number=3)
-    def test3_clockin(self):
-        Clock(self.dr).clockbtn()
-        Clock(self.dr).clockinbtn()
-        Clock(self.dr).attendancebtn()
-        self.logger.info('%s已成功打卡' % self.username)
+    # @retry(stop_max_attempt_number=3)
+    # def test3_clockin(self):
+    #     Clock(self.dr).clockbtn()
+    #     Clock(self.dr).clockinbtn()
+    #     Clock(self.dr).attendancebtn()
+    #     self.logger.info('%s已成功打卡' % self.username)
 
 
     @classmethod
     def tearDownClass(self):
         self.dr.quit()
+        Y = []
+        receusers = YamlReader(PROJECTINFO).get('OA').get('mail')['receusers'][0]
+        Y.append(receusers)
+        eml = Mail('OA', Y)
+        eml.send_mail()
 
 
 if __name__ == '__main__':
