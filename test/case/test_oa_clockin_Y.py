@@ -7,13 +7,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from config.pathes import USERINFO, PROJECTINFO
+from config.pathes import USERINFO
 from test.page.M3OAClockPage import Clock
 from test.page.M3OALoginPage import M3OALogin
 from test.page.M3OANavigationPage import Navigation
 from utils.FileReader import YamlReader
 from utils.log import Logger
-from utils.mail import Mail
 
 
 class ClockIn(unittest.TestCase):
