@@ -34,20 +34,20 @@ class ClockIn(unittest.TestCase):
     @retry(stop_max_attempt_number=3)
     def test1_login(self):
         time.sleep(3)
-        # try:
-        #     self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']")
-        #     self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']").click()
-        #     print('跳过势密码设置')
-        # except Exception:
-        #     print('无手势密码设置')
-        # try:
-        #     self.dr.find_element_by_name("提示")
-        #     self.dr.find_element_by_name("我知道了").click()
-        #     time.sleep(1)
-        #     self.dr.keyevent(4)
-        #     print('跳过弱密码修改')
-        # except Exception:
-        #     print('无弱密码修改')
+        try:
+            self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']")
+            self.dr.find_element_by_xpath("//android.widget.Button[@text='跳过']").click()
+            print('跳过势密码设置')
+        except Exception:
+            print('无手势密码设置')
+        try:
+            self.dr.find_element_by_name("提示")
+            self.dr.find_element_by_name("我知道了").click()
+            time.sleep(1)
+            self.dr.keyevent(4)
+            print('跳过弱密码修改')
+        except Exception:
+            print('无弱密码修改')
         # try:
         #     Navigation(self.dr).mybtn()
         #     WebDriverWait(self.dr, 15, 1).until(
