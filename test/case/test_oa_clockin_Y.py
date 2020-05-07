@@ -94,10 +94,10 @@ class ClockIn(unittest.TestCase):
         time.sleep(1)
         self.logger.info('%s已成功定位' % self.username)
 
-    # @retry(stop_max_attempt_number=3)
-    # def test3_clockin(self):
-    #     Clock(self.dr).clockbtn()
-    #     Clock(self.dr).clockinbtn()
+    @retry(stop_max_attempt_number=3)
+    def test3_clockin(self):
+        Clock(self.dr).clockbtn()
+        # Clock(self.dr).clockinbtn()
     #     Clock(self.dr).attendancebtn()
     #     self.logger.info('%s已成功打卡' % self.username)
 
