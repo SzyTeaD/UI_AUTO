@@ -29,8 +29,8 @@ class ClockIn(unittest.TestCase):
         Home(self.dr).center_of_clock()
         Clock(self.dr).mainiframe()
         Clock(self.dr).tabiframe()
-        time.sleep(1)
-        Clock(self.dr).clockout()
+        # time.sleep(1)
+        # Clock(self.dr).clockout()
 
     @classmethod
     def tearDownClass(self):
