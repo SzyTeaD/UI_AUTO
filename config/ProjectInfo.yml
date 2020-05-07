@@ -2,7 +2,7 @@ OA:
   homeurl: 'https://oa.casicloud.com:4438/seeyon/main.do'
   mail:
     senduser: '676307573@qq.com'
-    sendpswd: 'atcimddyfallbebb'
+    sendpswd: 'gbgqcklauogpbcba'
     receusers: ['676307573@qq.com','1181105615@qq.com']
   log:
       file_name: OAtest.log

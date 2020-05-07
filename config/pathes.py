@@ -27,4 +27,4 @@ FRAME_PATH = os.path.join(os.path.join(PICTURE_PATH,'verifycode'), 'frame4.png')
 SCREENSHOT_PATH = os.path.join(os.path.join(PICTURE_PATH,'screenshot'), NOW+'wrong.png')
 
 if __name__ == '__main__':
-    print(OPERA_PATH)
+    print(LOG_PATH)
