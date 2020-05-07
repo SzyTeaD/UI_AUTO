@@ -98,7 +98,7 @@ class ClockIn(unittest.TestCase):
     def test3_clockin(self):
         Clock(self.dr).clockbtn()
         Clock(self.dr).clockinbtn()
-        Clock(self.dr).attendancebtn()
+        # Clock(self.dr).attendancebtn()
         self.logger.info('%s已成功打卡' % self.username)
 
 
