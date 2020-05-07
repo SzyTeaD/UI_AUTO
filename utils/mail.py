@@ -31,7 +31,20 @@ class Mail(object):
         new_log = open(new_log_file, 'r', encoding='utf-8').read()
         return new_log
 
+    def remove_log(self):
+        """删除多余邮件"""
+        while True:
+            lists = os.listdir(REPORT_PATH)
+            log_count = len(set(lists))
+            if log_count <= 5:
+                break
+            else:
+                lists.sort(key=lambda fn: os.path.getmtime(REPORT_PATH))
+                old_log_file = os.path.join(REPORT_PATH, lists[0])
+                os.remove(old_log_file)
+
     def send_mail(self):
+        self.remove_log()
         body_main = self.new_log()
         report = self.new_report()
         msg = MIMEMultipart()
