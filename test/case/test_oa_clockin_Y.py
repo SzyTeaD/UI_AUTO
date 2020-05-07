@@ -97,9 +97,9 @@ class ClockIn(unittest.TestCase):
     @retry(stop_max_attempt_number=3)
     def test3_clockin(self):
         Clock(self.dr).clockbtn()
-        # Clock(self.dr).clockinbtn()
-    #     Clock(self.dr).attendancebtn()
-    #     self.logger.info('%s已成功打卡' % self.username)
+        Clock(self.dr).clockinbtn()
+        Clock(self.dr).attendancebtn()
+        self.logger.info('%s已成功打卡' % self.username)
 
 
     @classmethod
